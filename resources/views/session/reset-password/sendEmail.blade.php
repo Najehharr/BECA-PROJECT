@@ -4,55 +4,57 @@
 
 <div class="page-header section-height-75">
     <div class="container">
-        <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-                <div class="card card-plain mt-8">
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="card card-plain mt-5">
                     @if($errors->any())
-                        <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
-                            <span class="alert-text text-white">
-                            {{$errors->first()}}</span>
+                        <div class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
+                            <span class="alert-text text-white">{{ $errors->first() }}</span>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                 <i class="fa fa-close" aria-hidden="true"></i>
                             </button>
                         </div>
                     @endif
+
                     @if(session('success'))
-                        <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
-                            <span class="alert-text text-white">
-                            {{ session('success') }}</span>
+                        <div class="m-3 alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                            <span class="alert-text text-white">{{ session('success') }}</span>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                 <i class="fa fa-close" aria-hidden="true"></i>
                             </button>
                         </div>
                     @endif
+
                     <div class="card-header pb-0 text-left bg-transparent">
-                        <h4 class="mb-0">Mot de passe oublié ? Saisissez votre adresse e-mail ici.</h4>
+                        <h4 class="mb-0">Mot de passe oublié ?</h4>
+                        <p class="text-sm">Saisissez votre adresse e-mail ici.</p>
                     </div>
+
                     <div class="card-body">
-                    
                         <form action="/forgot-password" method="POST" role="form text-left">
                             @csrf
-                            <div>
+                            <div class="mb-3">
                                 <label for="email">Email</label>
-                                <div class="">
-                                    <input id="email" name="email" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
-                                    @error('email')
-                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                    @enderror
-                                </div>
+                                <input id="email" name="email" type="email" class="form-control" placeholder="Email" aria-label="Email">
+                                @error('email')
+                                    <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
+
                             <div class="text-center">
-                                <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Recover your password</button>
+                                {{-- MODIFICATION HERE: Changed the class and added inline style --}}
+                                <button type="submit" class="btn w-100 mt-4 mb-0" style="background-color: #F44336; color: white;">Récupérez votre mot de passe</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                    
-                </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 text-center">
+                <img src="{{ asset('assets/img/logo-beca.png') }}" alt="Logo BECA" class="img-fluid" style="max-height: 300px;">
             </div>
+
         </div>
     </div>
 </div>

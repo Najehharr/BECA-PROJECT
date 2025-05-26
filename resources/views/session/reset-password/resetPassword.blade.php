@@ -8,7 +8,7 @@
             <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                 <div class="card card-plain mt-8">
                     <div class="card-header pb-0 text-left bg-transparent">
-                        <h4 class="mb-0">Change password</h4>
+                        <h4 class="mb-0">Changer le mot de passe</h4>
                     </div>
                     <div class="card-body">
                         <form role="form" action="/reset-password" method="POST">
@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="password">New Password</label>
+                                <label for="password">Nouveau mot de passe</label>
                                 <div class="">
                                     <input id="password" name="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                                     @error('password')
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="password_confirmation">Confirm Password</label>
+                                <label for="password_confirmation">Confirmez le mot de passe</label>
                                 <div class="">
                                     <input id="password-confirmation" name="password_confirmation" type="password" class="form-control" placeholder="Password-confirmation" aria-label="Password-confirmation" aria-describedby="Password-addon">
                                     @error('password')
@@ -41,8 +41,15 @@
                                     @enderror
                                 </div>
                             </div>
+                                  <div class="mb-3">
+              <button type="submit" class="form-control text-white fw-bold" style="background-color: #F44336;">
+                Connexion
+              </button>
+            </div>
+
                             <div class="text-center">
-                                <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Recover your password</button>
+
+                                <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Récupérez votre mot de passe</button>
                             </div>
                         </form>
                     </div>
