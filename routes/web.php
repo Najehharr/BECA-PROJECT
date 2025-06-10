@@ -22,6 +22,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/dashboard/directeur', function () {
+    return view('dashboarddirecteur');
+})->name('dashboard.directeur')->middleware('auth');
+
+Route::get('/dashboard/inspecteur', function () {
+    return view('dashboardinspecteur');
+})->name('dashboard.inspecteur')->middleware('auth');
+
+Route::get('/dashboard/coordinateur', function () {
+    return view('dashboardcoordinateur');
+})->name('dashboard.coordinateur')->middleware('auth');
+
+Route::get('/dashboard/secretaire', function () {
+    return view('dashboardsecretaire');
+})->name('dashboard.secretaire')->middleware('auth');
+
+Route::get('/login', [SessionsController::class, 'create'])->name('login');
+Route::post('/session', [SessionsController::class, 'store']); // login submission
+Route::post('/logout', [SessionsController::class, 'destroy'])->name('logout');
+
+
+Route::get('/dashboard/directeur', function () {
+    return view('dashboarddirecteur');
+})->middleware(['auth', 'role:directeur'])->name('dashboard.directeur');
+
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
