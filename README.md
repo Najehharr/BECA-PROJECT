@@ -450,7 +450,7 @@ Facebook: <https://www.facebook.com/updivision?ref=sudl-readme>
 
 Linkedin: <https://www.linkedin.com/company/updivision?ref=sudl-readme>
 
-Updivision Blog: <https://updivision.com/blog/?ref=sudl-readme>
+
 
 ## Credits
 
