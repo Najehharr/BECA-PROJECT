@@ -24,10 +24,15 @@ class DashboardController extends Controller
 
 
 
-    public function dashboardInspecteur()
+public function dashboardInspecteur()
 {
+    // Get the currently logged-in inspecteur
     $inspecteur = Auth::guard('inspecteur')->user();
-    $missions = MissionEnCours::where('utilisateurs', $inspecteur->email)->get();
+
+    // Fetch missions assigned to this inspecteur by email
+    $missions = MissionEnCours::where('email', $inspecteur->email)->get();
+
+    // Return the view with the missions
     return view('dashboardinspecteurnouvelle', compact('missions'));
 }
 
@@ -128,6 +133,10 @@ class DashboardController extends Controller
         $missions = MissionEnCours::all();
          return view('laravel-examples.user-profile', compact('missions'));
     }
+
+
+    
+    
 
     public function store(Request $request)
     {

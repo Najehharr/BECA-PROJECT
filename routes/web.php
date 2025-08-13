@@ -49,6 +49,8 @@ Route::middleware(['auth:inspecteur'])->group(function() {
 });
 
 
+
+
 // Dashboard - Directeur
 Route::get('/dashboard/directeur', [DashboardController::class, 'directeurDashboard'])
     ->middleware(['auth', 'role:directeur'])
@@ -130,5 +132,4 @@ Route::middleware(['auth:inspecteur'])->group(function() {
     Route::get('/dashboard/inspecteur', [DashboardController::class, 'dashboardInspecteur'])->name('dashboard.inspecteur');
     Route::get('/dashboard/inspecteur/avancement', [DashboardController::class, 'inspecteurAvancement'])->name('dashboard.inspecteur.avancement');
 });
-
 
