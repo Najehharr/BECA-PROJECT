@@ -263,8 +263,12 @@ public function dashboardInspecteur()
 
     public function inspecteurAvancement()
 {
+     // Get the currently logged-in inspecteur
     $inspecteur = Auth::guard('inspecteur')->user();
-    $missions = MissionEnCours::where('utilisateurs', $inspecteur->email)->get();
+
+    // Fetch missions assigned to this inspecteur by email
+    $missions = MissionEnCours::where('email', $inspecteur->email)->get();
+
     return view('dashboardinspecteuravancement', compact('missions'));
 }
 
