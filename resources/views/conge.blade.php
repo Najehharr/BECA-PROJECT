@@ -21,25 +21,26 @@
                 <form action="{{ route('conge.store') }}" method="POST">
                     @csrf
 
-                    {{-- Nom de l'inspecteur --}}
-                    {{-- Use the inspecteur guard --}}
-                    <input type="text" class="form-control" id="nom_inspecteur" name="nom_inspecteur"
-                        value="{{ Auth::guard('inspecteur')->user()?->nom }}">
-
-                    <input type="text" class="form-control" id="matricule" name="matricule"
-                        value="{{ Auth::guard('inspecteur')->user()?->id }}">
-
+                    {{-- Display inspector name (not submitted) --}}
+                    <div class="mb-3">
+                        <label class="form-label">Inspecteur</label>
+                        <input type="text" class="form-control" 
+                               value="{{ Auth::guard('inspecteur')->user()?->nom }}" 
+                               readonly>
+                    </div>
 
                     {{-- Durée du congé --}}
                     <div class="mb-3">
                         <label for="duree_conge" class="form-label">Durée du congé (jours)</label>
-                        <input type="number" class="form-control" id="duree_conge" name="duree_conge" required>
+                        <input type="number" class="form-control" id="duree_conge" 
+                               name="duree_conge" required min="1">
                     </div>
 
                     {{-- Date de début --}}
                     <div class="mb-3">
                         <label for="date_debut" class="form-label">Date de début</label>
-                        <input type="date" class="form-control" id="date_debut" name="date_debut" required>
+                        <input type="date" class="form-control" id="date_debut" 
+                               name="date_debut" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Envoyer la demande</button>

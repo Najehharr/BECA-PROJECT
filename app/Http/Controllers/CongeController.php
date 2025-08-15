@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Mail;
 use App\Models\Conge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\CongeDemandeMail;
+use Carbon\Carbon;
 class CongeController extends Controller
 {
 
@@ -54,24 +56,34 @@ class CongeController extends Controller
 
 
 
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'duree_conge' => 'required|integer|min:1',
+        'date_debut' => 'required|date',
+    ]);
 
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'nom_inspecteur' => 'required|string|max:100',
-            'matricule' => 'required|string|max:50',
-            'duree_conge' => 'required|integer|min:1',
-            'date_debut' => 'required|date',
-        ]);
+    // Get the currently logged-in inspecteur
+    $inspecteur = Auth::guard('inspecteur')->user();
 
-        DB::table('congé')->insert([
-            'nom_inspecteur' => $validated['nom_inspecteur'],
-            'matricule' => $validated['matricule'],
-            'duree_conge' => $validated['duree_conge'],
-            'date_debut' => $validated['date_debut'],
-            'statut' => 'En attente',
-        ]);
+    // Prepare the data
+    $data = [
+        'nom_inspecteur' => $inspecteur->nom,
+        'matricule' => $inspecteur->matricule ?? 'N/A',
+        'duree_conge' => $validated['duree_conge'],
+        'date_debut' => $validated['date_debut'],
+        'statut' => 'En attente',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ];
 
-        return redirect()->back()->with('success', 'La demande a été envoyée.');
-    }
+    // 1. Insert into database
+    DB::table('conges')->insert($data);
+
+    // 2. Send email to directeur
+    Mail::to(env('DIRECTEUR_EMAIL', 'manelbenfarah01@gmail.com'))
+        ->send(new CongeDemandeMail($data));
+
+    return redirect()->back()->with('success', 'La demande a été envoyée au directeur.');
+}
 }

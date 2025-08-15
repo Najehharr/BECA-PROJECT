@@ -9,7 +9,7 @@ class Conge extends Model
 {
     use HasFactory;
 
-    protected $table = 'congé'; // exact table name in DB
+    protected $table = 'conges';
     protected $primaryKey = 'id';
     public $timestamps = false; // disable if your table has no created_at/updated_at
 

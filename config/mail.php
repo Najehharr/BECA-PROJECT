@@ -44,6 +44,8 @@ return [
             'timeout' => null,
             'auth_mode' => null,
         ],
+        'directeur' => env('DIRECTEUR_EMAIL', 'manelbenfarah01@gmail.com'),
+
 
         'ses' => [
             'transport' => 'ses',
