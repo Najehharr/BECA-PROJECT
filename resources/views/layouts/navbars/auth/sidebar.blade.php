@@ -13,7 +13,7 @@
     @endphp
 
     {{-- Directeur --}}
-    @if($user && $user->role === 'directeur')
+     @if($user && $user->role === 'directeur')
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link {{ Request::is('dashboard/directeur') ? 'active' : '' }}" href="{{ route('dashboard.directeur') }}">

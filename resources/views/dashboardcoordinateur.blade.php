@@ -45,7 +45,9 @@
                                         <th>Date Début</th>
                                         <th>Date Fin</th>
                                         <th>Durée</th>
+                                        <th>Cas</th>
                                         <th>Action</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,6 +70,14 @@
                                         <td>{{ $mission->datefin }}</td>
                                         <td>{{ $mission->duree }}</td>
                                         <td>
+                                            @if ($mission->cas === 'confirmé')
+                                                <span class="badge bg-success">confirmé</span>
+                                            @else ($mission->cas === 'non confirmé')
+                                                <span class="badge bg-danger">non confirmé</span>
+                                           
+                                            @endif
+                                        </td>
+                                        <td>
                                             <!-- Edit button -->
                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editMissionModal{{ $mission->id }}" title="Modifier">
                                                 <i class="fas fa-edit"></i>
@@ -82,6 +92,7 @@
                                                 </button>
                                             </form>
                                         </td>
+                                        
                                     </tr>
 
                                     <!-- Edit Modal -->

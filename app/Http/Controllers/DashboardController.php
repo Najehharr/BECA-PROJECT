@@ -311,4 +311,14 @@ public function dashboardInspecteur()
 
         return redirect()->back()->with('success', 'Mission acceptée avec succès.');
     }
+
+    public function confirmer($id)
+{
+    $mission = MissionEnCours::findOrFail($id);
+    $mission->cas = 'confirmé';
+    $mission->save();
+
+    return redirect()->back()->with('success', 'Cas confirmé avec succès.');
+}
+
 }

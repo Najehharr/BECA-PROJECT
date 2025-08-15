@@ -133,3 +133,4 @@ Route::middleware(['auth:inspecteur'])->group(function() {
     Route::get('/dashboard/inspecteur/avancement', [DashboardController::class, 'inspecteurAvancement'])->name('dashboard.inspecteur.avancement');
 });
 
+Route::post('/missions/{id}/confirmer', [DashboardController::class, 'confirmer'])->name('missions.confirmer');
