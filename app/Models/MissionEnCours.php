@@ -12,6 +12,6 @@ class MissionEnCours extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['missions','client','lieu','utilisateurs','status', 'datedebut','datefin','duree','jours','accepte','cas'];
+    protected $fillable = ['missions','client','lieu','utilisateurs','email','status', 'datedebut','datefin','duree','jours','accepte','cas'];
 }
 

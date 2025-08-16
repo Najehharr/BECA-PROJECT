@@ -18,8 +18,8 @@
       <li class="nav-item">
         <a class="nav-link {{ Request::is('dashboard/directeur') ? 'active' : '' }}" href="{{ route('dashboard.directeur') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 45 40">
-              <path d="M..." fill="#FFFFFF" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+              <path d="M2 2h4v4H2V2zm5 0h4v4H7V2zM2 7h4v4H2V7zm5 0h4v4H7V7zM2 12h4v2H2v-2zm5 0h4v2H7v-2z" />
             </svg>
           </div>
           <span class="nav-link-text ms-1">Etat général</span>
@@ -28,8 +28,8 @@
       <li class="nav-item">
         <a class="nav-link {{ Request::is('missions') ? 'active' : '' }}" href="{{ route('missions') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 46 42">
-              <path d="M..." fill="#FFFFFF" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+              <path d="M2 2h4v4H2V2zm5 0h4v4H7V2zM2 7h4v4H2V7zm5 0h4v4H7V7zM2 12h4v2H2v-2zm5 0h4v2H7v-2z" />
             </svg>
           </div>
           <span class="nav-link-text ms-1">Mission en cours</span>
@@ -38,8 +38,8 @@
       <li class="nav-item">
         <a class="nav-link {{ Request::is('rapports') ? 'active' : '' }}" href="{{ url('rapports') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 43 36">
-              <path d="M..." fill="#FFFFFF" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+              <path d="M2 2h4v4H2V2zm5 0h4v4H7V2zM2 7h4v4H2V7zm5 0h4v4H7V7zM2 12h4v2H2v-2zm5 0h4v2H7v-2z" />
             </svg>
           </div>
           <span class="nav-link-text ms-1">Liste demande congé</span>
@@ -48,8 +48,8 @@
       <li class="nav-item">
         <a class="nav-link {{ Request::is('tables') ? 'active' : '' }}" href="{{ url('tables') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <svg width="12px" height="12px" viewBox="0 0 42 42">
-              <path d="M..." fill="#FFFFFF" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+              <path d="M2 2h4v4H2V2zm5 0h4v4H7V2zM2 7h4v4H2V7zm5 0h4v4H7V7zM2 12h4v2H2v-2zm5 0h4v2H7v-2z" />
             </svg>
           </div>
           <span class="nav-link-text ms-1">Demande de congé</span>

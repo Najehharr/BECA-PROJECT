@@ -47,7 +47,7 @@
                                     <tr>
                                         <td>{{ $inspecteur->nom }}</td>
                                         <td>{{ $inspecteur->mission }}</td>
-                                        <td>{{ $inspecteur->mail }}</td>
+                                        <td>{{ $inspecteur->email }}</td>
                                         <td>{{ $inspecteur->motpasse }}</td>
                                         <td>
                                             {{-- Edit --}}
@@ -88,7 +88,7 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Email</label>
-                                                            <input type="email" name="mail" class="form-control" value="{{ $inspecteur->mail }}" required>
+                                                            <input type="email" name="email" class="form-control" value="{{ $inspecteur->email }}" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Mot de passe</label>
@@ -133,7 +133,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" name="mail" class="form-control" required>
+                                <input type="email" name="email" class="form-control" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Mot de passe</label>

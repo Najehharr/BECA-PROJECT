@@ -139,41 +139,55 @@ public function dashboardInspecteur()
     
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'missions' => 'required|string',
-            'client' => 'required|string',
-            'lieu' => 'required|string',
-            'utilisateurs' => 'required|string',
-            'status' => 'required|string',
-            'datedebut' => 'required|date',
-            'datefin' => 'nullable|date',
-            'duree' => 'nullable|string',
-        ]);
+{
+    $request->validate([
+        'missions' => 'required|string',
+        'client' => 'required|string',
+        'lieu' => 'required|string',
+        'utilisateurs' => 'required|string',
+        'status' => 'required|string',
+        'datedebut' => 'required|date',
+        'datefin' => 'nullable|date',
+        'duree' => 'nullable|integer',
+        'jours' => 'nullable|integer',
+    ]);
 
-        MissionEnCours::create($request->all());
+    // Make sure duree is only a number
+    $request->merge([
+        'duree' => preg_replace('/\D/', '', $request->duree),
+        'jours' => $request->jours ?? 0
+    ]);
 
-        return redirect()->back()->with('success', 'Mission ajoutée avec succès.');
-    }
+    MissionEnCours::create($request->all());
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'missions' => 'required|string',
-            'client' => 'required|string',
-            'lieu' => 'required|string',
-            'utilisateurs' => 'required|string',
-            'status' => 'required|string',
-            'datedebut' => 'required|date',
-            'datefin' => 'nullable|date',
-            'duree' => 'nullable|string',
-        ]);
+    return redirect()->back()->with('success', 'Mission ajoutée avec succès.');
+}
 
-        $mission = MissionEnCours::findOrFail($id);
-        $mission->update($request->all());
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'missions' => 'required|string',
+        'client' => 'required|string',
+        'lieu' => 'required|string',
+        'utilisateurs' => 'required|string',
+        'status' => 'required|string',
+        'datedebut' => 'required|date',
+        'datefin' => 'nullable|date',
+        'duree' => 'nullable|integer',
+        'jours' => 'nullable|integer',
+    ]);
 
-        return redirect()->back()->with('success', 'Mission mise à jour avec succès.');
-    }
+    $request->merge([
+        'duree' => preg_replace('/\D/', '', $request->duree),
+        'jours' => $request->jours ?? 0
+    ]);
+
+    $mission = MissionEnCours::findOrFail($id);
+    $mission->update($request->all());
+
+    return redirect()->back()->with('success', 'Mission mise à jour avec succès.');
+}
+
 
     public function destroy($id)
     {
@@ -221,14 +235,14 @@ public function dashboardInspecteur()
         $validated = $request->validate([
             'nom' => 'required|string',
             'mission' => 'required|string',
-            'mail' => 'required|email',
+            'email' => 'required|email',
             'motpasse' => 'required|string|min:6',
         ]);
 
         DB::table('inspecteur')->insert([
             'nom' => $validated['nom'],
             'mission' => $validated['mission'],
-            'mail' => $validated['mail'],
+            'email' => $validated['email'],
             'motpasse' => bcrypt($validated['motpasse']),
         ]);
 
@@ -237,7 +251,7 @@ public function dashboardInspecteur()
 
     public function updateinspecteur(Request $request, $id)
     {
-        $data = $request->only(['nom', 'mission', 'mail']);
+        $data = $request->only(['nom', 'mission', 'email']);
         if ($request->filled('motpasse')) {
             $data['motpasse'] = bcrypt($request->motpasse);
         }
